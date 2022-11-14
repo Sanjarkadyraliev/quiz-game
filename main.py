@@ -1,16 +1,55 @@
-# This is a sample Python script.
+questions = {
+    "Who created Python?: ": "A",
+    "What year was Python created?: ": "B",
+    "Python is tributed to which comedy group?: ": "C",
+    "Is the Earth round?: ": "A"
+}
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuckerburg"],
+           ["A. 1989", "B. 1991", "C. 2000", "D. 2016"],
+           ["A. Lonely Island", "B. Smosh", "C. Monty Python", "D. SNL"],
+           ["A. True", "B. False", "C. sometimes", "D. What's Earth?"]]
+def new_game():
+    question_num = 1
+    guesses = []
+    correct_answer = 0
+    for key in questions:
+        print(key)
+        print("_________")
+        for el in options[question_num -1]:
+            print(el)
+        print("_________")
+        guess = input("Please enter answer (A, B, C, D)").upper()
+        guesses.append(guess)
+        correct_answer += check_answer(questions.get(key), guess)
+        question_num +=1
+        display_score(correct_answer, len(guesses))
+def check_answer(answer,guess):
+    if answer == guess:
+        print("CORRECT")
+        return 1
+    else:
+        print("WRONG")
+        return 0
+def display_score(correct_ans, guesses):
+    total = (correct_ans / guesses) * 100
+    print("Your total score is",total, "%" )
+def play_again():
+    response = input("Do you wanna play again:(yes or no) : ").upper()
+    if response == "Yes":
+        return True
+    elif response == "No":
+        return False
+new_game()
+
+def main():
+    while play_again():
+        new_game()
+        print("Bye bye")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
