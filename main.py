@@ -20,6 +20,14 @@ def new_game():
             print(el)
         print("_________")
         guess = input("Please enter answer (A, B, C, D)").upper()
+        if len(guess) > 1:
+                print("You should enter one symbol")
+                guess = input("Please enter answer (A, B, C, D)").upper()
+        if type(guess) == int or float:
+                print(" Invalid entry, try again: ")
+                guess = input("Please enter answer (A, B, C, D)").upper()
+        if len(guess) == 1 and type(guess) == str:
+                guess = input("Please enter answer (A, B, C, D)").upper()
         guesses.append(guess)
         correct_answer += check_answer(questions.get(key), guess)
         question_num +=1
