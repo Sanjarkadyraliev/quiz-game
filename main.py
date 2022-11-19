@@ -1,3 +1,5 @@
+from _ctypes_test import func
+
 questions = {
     "Who created Python?: ": "A",
     "What year was Python created?: ": "B",
@@ -23,15 +25,18 @@ def new_game():
         if len(guess) > 1:
                 print("You should enter one symbol")
                 guess = input("Please enter answer (A, B, C, D)").upper()
-        if type(guess) == int or float:
-                print(" Invalid entry, try again: ")
-                guess = input("Please enter answer (A, B, C, D)").upper()
-        if len(guess) == 1 and type(guess) == str:
+        #elif type(guess) == int or float:
+                #print(" Invalid entry, try again: ")
+                #guess = input("Please enter answer (A, B, C, D)").upper()
+        elif len(guess) == 1 and type(guess) == str:
                 guess = input("Please enter answer (A, B, C, D)").upper()
         guesses.append(guess)
         correct_answer += check_answer(questions.get(key), guess)
         question_num +=1
         display_score(correct_answer, len(guesses))
+
+
+
 def check_answer(answer,guess):
     if answer == guess:
         print("CORRECT")
